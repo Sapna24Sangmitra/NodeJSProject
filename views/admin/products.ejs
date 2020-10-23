@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+
+<body>
+    <h1>Products</h1>
+    <% if(prods.length > 0) { %>
+
+    <% for (let product of prods) { %>
+    <div>
+        <%= product.name%><br>
+        <%=product.imageUrl%><br>
+
+        <%= product.description%><br>
+        <%= product.price%><br>
+        <%= product.currency%><br>
+        <a href="/admin/edit-product/<%= product.id %>">Edit</a><br>
+        <form action="/admin/delete-product" method="POST">
+            <input type="hidden" value="<%= product.id %>" name="id">
+            <button type="submit">Delete</button>
+        </form>
+        <% } %>
+
+    </div>
+    <% }  else { %>
+            NO products found
+    <% } %>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome to My Ordering App</h1>
+
+    <h3>New to My Ordering App????  Please SignUp!!!</h3>
+    <form action="/signup" method="POST">
+        <a href="/signup">signup</a>
+    </form>
+    <br>
+    <h3>Login</h3>
+    <form action="/login" method="POST">
+        <a href="/login" >Login</a>
+    </form>
+    <br>
+    <br>
+    <% if (prods.length > 0) { %>
+        
+            <% for (let product of prods) { %>
+                <%= product.name %>
+                <%= product.imageUrl %><br>
+                <%= product.description %><br>
+                <%= product.price %><br>
+                <%= product.currency %><br>
+
+                <form action="/orders" method="POST">
+                    <input type="hidden" value="<%= product.price %>" name = "price">
+                    <input type="hidden" value="<%= product.id %>" name = "id">
+                    <button type="submit">Order Now!</button>
+                </form>
+
+                <% } %>
+           
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+</body>
+</html>
